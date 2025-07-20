@@ -1,0 +1,56 @@
+:root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+
+  --primary-color: white;
+  --secondary-color: black;
+  --tertiary-color: #606060;
+  --quaternary-color: #333333;
+
+  --title-text: 30px;
+  --paragraph-text: 24px;
+  --card-title: 30px;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+}
+header {
+  grid-area: 'header';
+  background-color: lightblue;
+}
+
+main {
+  grid-area: 'main';
+  background-color: pink;
+  display: grid;
+  grid-template-areas: 'article section';
+}
+
+article {
+  background-color: lightcoral;
+  width: 30%;
+}
+
+section {
+  background-color: lightsalmon;
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  height: 200px;
+  width: auto;
+}
+footer {
+  grid-area: 'footer';
+
+  background-color: lightseagreen;
+}
