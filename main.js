@@ -140,23 +140,78 @@ let main = document.createElement('main')
 
 //article
 let article = document.createElement('article')
-let priceFilter = document.createElement('section')
-let priceFilterTitle = document.createElement('h4')
-let priceFilterTitleText = document.createTextNode('Filtra por precio')
 
-priceFilterTitle.appendChild(priceFilterTitleText)
-priceFilter.appendChild(priceFilterTitle)
-article.appendChild(priceFilter)
-
+// filtro jugadores
+let players = [
+  {
+    name: '1 jugador',
+    quantity: 1
+  },
+  {
+    name: '2 jugadores',
+    quantity: 2
+  },
+  {
+    name: '3 jugadores',
+    quantity: 3
+  },
+  {
+    name: '4 jugadores',
+    quantity: 4
+  },
+  {
+    name: '5 jugadores',
+    quantity: 5
+  },
+  {
+    name: '6 jugadores',
+    quantity: 6
+  },
+  {
+    name: '7 jugadores',
+    quantity: 7
+  },
+  {
+    name: '8 jugadores',
+    quantity: 8
+  }
+]
 let playersFilter = document.createElement('section')
 let playersFilterTitle = document.createElement('h4')
 let playersFilterTitleText = document.createTextNode(
   'Filtra por número de jugadores'
 )
-
 playersFilterTitle.appendChild(playersFilterTitleText)
 playersFilter.appendChild(playersFilterTitle)
+
+for (const player of players) {
+  let playerButton = document.createElement('button')
+  playerButton.classList.add('playerButton')
+  let buttonText = document.createTextNode(player.name)
+  playerButton.appendChild(buttonText)
+  playersFilter.appendChild(playerButton)
+}
+
 article.appendChild(playersFilter)
+
+// filtro por tiempo de juego
+
+let minutes = ['≤ 15 minutos', '15-30 minutos', ' ≥ 40 minutos']
+let timeFilter = document.createElement('section')
+let timeFilterTitle = document.createElement('h4')
+let timeFilterTitleText = document.createTextNode('Filtra por tiempo de juego')
+
+timeFilterTitle.appendChild(timeFilterTitleText)
+timeFilter.appendChild(timeFilterTitle)
+
+for (const minute of minutes) {
+  let timeButton = document.createElement('button')
+  timeButton.classList.add('timeButton')
+  let buttonText = document.createTextNode(minute)
+  timeButton.appendChild(buttonText)
+  timeFilter.appendChild(timeButton)
+}
+article.appendChild(timeFilter)
 
 main.appendChild(article)
 
@@ -180,8 +235,7 @@ for (const game of games) {
   card.appendChild(cardImage)
 
   let cardTitle = document.createElement('h3')
-  let title = document.createTextNode(game.name)
-  cardTitle.appendChild(title)
+  cardTitle.textContent = game.name
   card.appendChild(cardTitle)
 
   let cardPrice = document.createElement('p')
@@ -191,6 +245,7 @@ for (const game of games) {
   card.appendChild(cardPrice)
 
   let button = document.createElement('button')
+  button.classList.add('cardButton')
   let buttonText = document.createTextNode('Añadir al carrito')
   button.appendChild(buttonText)
   card.appendChild(button)
