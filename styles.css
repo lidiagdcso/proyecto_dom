@@ -23,9 +23,24 @@ body {
 }
 header {
   grid-area: header;
-  background-color: lightblue;
+
+  display: flex;
+  gap: 50px;
+  padding: 20px;
 }
 
+.logo {
+  max-width: 150px;
+}
+
+input {
+  border: none;
+  border-radius: 25px;
+  width: 70%;
+  background-color: var(--tertiary-color);
+  text-align: center;
+  font-size: var(--card-title);
+}
 /* Seccion principal */
 main {
   grid-area: main;
@@ -38,6 +53,7 @@ main {
 article {
   grid-area: article;
   background-color: lightcoral;
+  border-radius: 10px;
 }
 
 .container {
@@ -45,6 +61,7 @@ article {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 }
 h2 {
   font-weight: 800;
@@ -56,10 +73,11 @@ ul {
   flex-wrap: wrap;
   gap: 16px;
   justify-content: space-evenly;
+  list-style: none;
 }
 
 /* tarjetas */
-li {
+.container li {
   border-radius: 8px;
   background-color: var(--primary-color);
   display: flex;
@@ -69,7 +87,7 @@ li {
   width: 250px;
   padding: 10px;
 }
-li:hover {
+.container li:hover {
   box-shadow: 5px 5px 20px var(--secondary-color);
   cursor: pointer;
 }
@@ -112,6 +130,13 @@ button:hover {
 }
 footer {
   grid-area: footer;
+  border-top: 1px solid var(--tertiary-color);
+  padding: 20px;
+  margin-top: 20px;
+}
 
-  background-color: lightseagreen;
+.links {
+  color: var(--secondary-color);
+  text-decoration: none;
+  list-style: none;
 }

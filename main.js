@@ -123,10 +123,15 @@ let games = [
 // Header
 let header = document.createElement('header')
 
-let title = document.createElement('h1')
-let titleText = document.createTextNode('Título de Prueba - Zacatrus')
-title.appendChild(titleText)
-header.appendChild(title)
+let logo = document.createElement('img')
+logo.src =
+  'https://static.zacatrus.com/version1752420449/frontend/zaca/z2025/es_ES/images/logo.svg'
+logo.classList.add('logo')
+header.appendChild(logo)
+
+let finder = document.createElement('input')
+finder.placeholder = '¡Busca directamente y no te pierdas nada!'
+header.appendChild(finder)
 
 document.body.appendChild(header)
 
@@ -167,7 +172,6 @@ let ul = document.createElement('ul')
 section.appendChild(ul)
 
 for (const game of games) {
-  console.log(game.name)
   let card = document.createElement('li')
   card.classList.add('card')
 
@@ -199,10 +203,33 @@ main.appendChild(section)
 document.body.appendChild(main)
 
 //Footer
-let footer = document.createElement('footer')
-let titleFooter = document.createElement('h1')
-let titleFText = document.createTextNode('Footer- Zacatrus')
-titleFooter.appendChild(titleFText)
-footer.appendChild(titleFooter)
+let footerSections = [
+  {
+    name: 'Condiciones generales',
+    url: 'https://zacatrus.es/condiciones-generales.html'
+  },
+  {
+    name: 'Política de Privacidad y Aviso Legal',
+    url: 'https://zacatrus.es/privacy-policy-cookie-restriction-mode/'
+  },
+  {
+    name: 'Política de Cookies',
+    url: 'https://zacatrus.es/politica-cookies.html'
+  }
+]
 
+let footer = document.createElement('footer')
+
+let ulFooter = document.createElement('ul')
+for (const section of footerSections) {
+  let li = document.createElement('li')
+  let link = document.createElement('a')
+  link.href = section.url
+  link.textContent = section.name
+  link.classList.add('links')
+  li.appendChild(link)
+  ulFooter.appendChild(li)
+}
+
+footer.appendChild(ulFooter)
 document.body.appendChild(footer)
