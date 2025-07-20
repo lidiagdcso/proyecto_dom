@@ -6,12 +6,12 @@
 
   --primary-color: white;
   --secondary-color: black;
-  --tertiary-color: #606060;
-  --quaternary-color: #333333;
+  --tertiary-color: #f1f1f1;
+  --quaternary-color: #4884ec;
 
   --title-text: 30px;
-  --paragraph-text: 24px;
-  --card-title: 30px;
+  --price-text: 24px;
+  --card-title: 16px;
 }
 
 body {
@@ -22,35 +22,96 @@ body {
     'footer';
 }
 header {
-  grid-area: 'header';
+  grid-area: header;
   background-color: lightblue;
 }
 
+/* Seccion principal */
 main {
-  grid-area: 'main';
-  background-color: pink;
+  grid-area: main;
+  background-color: var(--tertiary-color);
   display: grid;
   grid-template-areas: 'article section';
+  grid-template-columns: 1fr 3fr;
 }
 
 article {
+  grid-area: article;
   background-color: lightcoral;
-  width: 30%;
 }
 
-section {
-  background-color: lightsalmon;
-  width: 30%;
+.container {
+  grid-area: section;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h2 {
+  font-weight: 800;
+  font-size: var(--title-text);
+}
+
+ul {
   display: flex;
   flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-evenly;
+}
+
+/* tarjetas */
+li {
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  padding: 10px;
+}
+li:hover {
+  box-shadow: 5px 5px 20px var(--secondary-color);
+  cursor: pointer;
+}
+
+li:hover > h3 {
+  text-decoration: underline;
 }
 
 img {
-  height: 200px;
-  width: auto;
+  width: 90%;
+  height: 55%;
+  object-fit: cover;
+  padding-top: 8px;
+}
+
+h3 {
+  color: var(--quaternary-color);
+  font-size: var(--card-title);
+  font-weight: 100;
+}
+
+.gamePrice {
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: var(--price-text);
+}
+
+button {
+  background-color: var(--quaternary-color);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+button:hover {
+  background-color: #006bb4;
 }
 footer {
-  grid-area: 'footer';
+  grid-area: footer;
 
   background-color: lightseagreen;
 }

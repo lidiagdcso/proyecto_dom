@@ -1,12 +1,12 @@
 let games = [
   {
-    name: 'Versailles',
-    price: "4'95€",
+    name: 'Portero Baldomero',
+    price: "12'50€",
     seller: 'Zacatrus',
-    players: [3, 4],
-    playingTime: 45,
+    players: [3, 4, 5, 6, 7, 8],
+    playingTime: 15,
     image:
-      'https://media.zacatrus.com/catalog/product/cache/f22f70ef8ee260256901b557cf6bf49a/v/e/versailles-juego-de-mesa.jpg'
+      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/e/l/el_portero_baldomero_1.jpg'
   },
 
   {
@@ -36,7 +36,7 @@ let games = [
     players: [2, 3, 4, 5, 6],
     playingTime: 20,
     image:
-      'https://media.zacatrus.com/catalog/product/cache/f22f70ef8ee260256901b557cf6bf49a/m/a/mala-suerte-juego.png'
+      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/m/a/mala-suerte-juego.png'
   },
 
   {
@@ -50,13 +50,13 @@ let games = [
   },
 
   {
-    name: 'One Piece Nakama: Amigos y Enemigos',
-    price: "22'50€",
+    name: '24h',
+    price: "12'50€",
     seller: 'Zacatrus',
     players: [2, 3, 4],
-    playingTime: 60,
+    playingTime: 20,
     image:
-      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/o/n/one-piece-nakama-friends-enemies-en-espanol-juego-de-mesa-de-tcg-factory.jpg'
+      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/2/4/24_horas-min.png'
   },
 
   {
@@ -90,13 +90,13 @@ let games = [
   },
 
   {
-    name: 'Harry Potter: Un año en Hogwarts',
-    price: "31'49€",
+    name: 'Cathood',
+    price: "27'95€",
     seller: 'Zacatrus',
-    players: [1, 2, 3, 4, 5, 6, 7, 8],
-    playingTime: 45,
+    players: [2, 3, 4],
+    playingTime: 60,
     image:
-      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/u/n/unanoenhowarts_resultado.jpg'
+      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/c/a/cathood.jpg'
   },
 
   {
@@ -116,7 +116,7 @@ let games = [
     players: [2, 3, 4],
     playingTime: 120,
     image:
-      'https://media.zacatrus.com/catalog/product/cache/f22f70ef8ee260256901b557cf6bf49a/a/n/anachrony-futuro-imperfecto.jpg'
+      'https://media.zacatrus.com/catalog/product/cache/ede91dc607ff58d6ff51aded48a7a72e/a/n/anachrony-futuro-imperfecto.jpg'
   }
 ]
 
@@ -157,29 +157,41 @@ main.appendChild(article)
 
 //section
 let section = document.createElement('section')
+section.classList.add('container')
 let titleSection = document.createElement('h2')
 let textTitle = document.createTextNode('Los juegos más populares')
 titleSection.appendChild(textTitle)
 section.appendChild(titleSection)
 
+let ul = document.createElement('ul')
+section.appendChild(ul)
+
 for (const game of games) {
   console.log(game.name)
-  let card = document.createElement('section')
-  let cardTitle = document.createElement('h3')
-  let title = document.createTextNode(game.name)
-  cardTitle.appendChild(title)
-  card.appendChild(cardTitle)
+  let card = document.createElement('li')
+  card.classList.add('card')
 
   let cardImage = document.createElement('img')
   cardImage.src = game.image
   card.appendChild(cardImage)
 
+  let cardTitle = document.createElement('h3')
+  let title = document.createTextNode(game.name)
+  cardTitle.appendChild(title)
+  card.appendChild(cardTitle)
+
   let cardPrice = document.createElement('p')
+  cardPrice.classList.add('gamePrice')
   let price = document.createTextNode(game.price)
   cardPrice.appendChild(price)
   card.appendChild(cardPrice)
 
-  section.appendChild(card)
+  let button = document.createElement('button')
+  let buttonText = document.createTextNode('Añadir al carrito')
+  button.appendChild(buttonText)
+  card.appendChild(button)
+
+  ul.appendChild(card)
 }
 
 main.appendChild(section)
