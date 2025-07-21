@@ -186,7 +186,7 @@ playersFilter.appendChild(playersFilterTitle)
 
 for (const player of players) {
   let playerButton = document.createElement('button')
-  playerButton.classList.add('playerButton')
+  playerButton.classList.add('playerButton', 'filterButton')
   playerButton.id = `${player.quantity}`
   let buttonText = document.createTextNode(player.name)
   playerButton.appendChild(buttonText)
@@ -214,7 +214,8 @@ timeFilter.appendChild(timeFilterTitle)
 
 for (const minute of minutes) {
   let timeButton = document.createElement('button')
-  timeButton.classList.add('timeButton')
+  timeButton.classList.add('timeButton', 'filterButton')
+
   timeButton.id = `${minute.id}`
   let buttonText = document.createTextNode(minute.name)
   timeButton.appendChild(buttonText)
@@ -297,3 +298,23 @@ for (const section of footerSections) {
 
 footer.appendChild(ulFooter)
 document.body.appendChild(footer)
+
+// Funciones - Eventos
+// Selecciono los botones y les aplico un eventlistener que ejecute la función de filtrado:
+let timeButtons = document.querySelectorAll('.timeButton') // me hace un array
+
+for (const btn of timeButtons) {
+  btn.addEventListener('click', timeFilteredGames)
+}
+
+// function timeFilteredGames() {
+//   for (const game of games) {
+//     if (game.playingTime <= 15) {
+//       console.log('dura 15 min')
+//     } else if (game.playingTime > 15 && game.playingTime <= 30) {
+//       console.log('dura 30 min')
+//     } else if (game.playingTime >= 40) {
+//       console.log('dura 40 min')
+//     }
+//   }
+// }
