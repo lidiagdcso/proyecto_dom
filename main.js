@@ -187,6 +187,7 @@ playersFilter.appendChild(playersFilterTitle)
 for (const player of players) {
   let playerButton = document.createElement('button')
   playerButton.classList.add('playerButton')
+  playerButton.id = `${player.quantity}`
   let buttonText = document.createTextNode(player.name)
   playerButton.appendChild(buttonText)
   playersFilter.appendChild(playerButton)
@@ -196,7 +197,14 @@ article.appendChild(playersFilter)
 
 // filtro por tiempo de juego
 
-let minutes = ['≤ 15 minutos', '15-30 minutos', ' ≥ 40 minutos']
+let minutes = [
+  { name: '≤ 15 minutos', id: 15 },
+  {
+    name: '15-30 minutos',
+    id: 30
+  },
+  { name: ' ≥ 40 minutos', id: 40 }
+]
 let timeFilter = document.createElement('section')
 let timeFilterTitle = document.createElement('h4')
 let timeFilterTitleText = document.createTextNode('Filtra por tiempo de juego')
@@ -207,7 +215,8 @@ timeFilter.appendChild(timeFilterTitle)
 for (const minute of minutes) {
   let timeButton = document.createElement('button')
   timeButton.classList.add('timeButton')
-  let buttonText = document.createTextNode(minute)
+  timeButton.id = `${minute.id}`
+  let buttonText = document.createTextNode(minute.name)
   timeButton.appendChild(buttonText)
   timeFilter.appendChild(timeButton)
 }
