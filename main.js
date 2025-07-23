@@ -184,13 +184,17 @@ let playersFilterTitleText = document.createTextNode(
 playersFilterTitle.appendChild(playersFilterTitleText)
 playersFilter.appendChild(playersFilterTitle)
 
+let playerBtnSection = document.createElement('section')
+article.appendChild(playerBtnSection)
+
 for (const player of players) {
   let playerButton = document.createElement('button')
   playerButton.classList.add('playerButton', 'filterButton')
   playerButton.id = `${player.quantity}`
   let buttonText = document.createTextNode(player.name)
   playerButton.appendChild(buttonText)
-  playersFilter.appendChild(playerButton)
+  playerBtnSection.appendChild(playerButton)
+  playersFilter.appendChild(playerBtnSection)
 }
 
 article.appendChild(playersFilter)
@@ -212,6 +216,9 @@ let timeFilterTitleText = document.createTextNode('Filtra por tiempo de juego')
 timeFilterTitle.appendChild(timeFilterTitleText)
 timeFilter.appendChild(timeFilterTitle)
 
+let timeBtnSection = document.createElement('section')
+article.appendChild(timeBtnSection)
+
 for (const minute of minutes) {
   let timeButton = document.createElement('button')
   timeButton.classList.add('timeButton', 'filterButton')
@@ -219,7 +226,8 @@ for (const minute of minutes) {
   timeButton.id = `${minute.id}`
   let buttonText = document.createTextNode(minute.name)
   timeButton.appendChild(buttonText)
-  timeFilter.appendChild(timeButton)
+  timeBtnSection.appendChild(timeButton)
+  timeFilter.appendChild(timeBtnSection)
 }
 article.appendChild(timeFilter)
 
@@ -227,10 +235,12 @@ main.appendChild(article)
 
 // botón de reseteo de filtros
 
+let resetSection = document.createElement('section')
 let resetBtn = document.createElement('button')
 resetBtn.textContent = 'Limpiar filtros'
 resetBtn.classList.add('resetButton')
-article.appendChild(resetBtn)
+resetSection.appendChild(resetBtn)
+article.appendChild(resetSection)
 
 //section
 let section = document.createElement('section')

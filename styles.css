@@ -175,3 +175,100 @@ footer {
   text-decoration: none;
   list-style: none;
 }
+
+/* tablet */
+@media (min-width: 375px) and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    margin: 0;
+  }
+  /* Seccion principal */
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  article section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .playerButton,
+  .timeButton,
+  .resetButton {
+    width: 140px;
+    font-size: 14px;
+  }
+
+  .resetButton {
+    margin-top: 30px;
+  }
+
+  .container ul {
+    padding: 0;
+  }
+}
+/* movil */
+@media (max-width: 375px) {
+  /* Seccion principal */
+
+  header {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  input {
+    width: 80%;
+    font-size: 13px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  article section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .playerButton,
+  .timeButton,
+  .resetButton {
+    width: 120px;
+    height: 30px;
+    font-size: 11px;
+  }
+
+  .resetButton {
+    margin-top: 15px;
+    background-color: #5b8fe97e;
+  }
+
+  .container ul {
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+footer ul {
+  padding: 0;
+  font-size: 15px;
+}
