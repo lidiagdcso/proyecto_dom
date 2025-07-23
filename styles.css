@@ -65,7 +65,8 @@ article {
 }
 
 .playerButton,
-.timeButton {
+.timeButton,
+.resetButton {
   display: block;
   margin: 10px;
   height: 40px;
@@ -79,6 +80,11 @@ article {
   padding: 10px 20px;
 }
 
+.resetButton {
+  margin-top: 60px;
+  border: 1px dotted var(--secondary-color);
+  font-weight: 700;
+}
 .playerButton:hover,
 .timeButton:hover {
   transform: scale(1.1);

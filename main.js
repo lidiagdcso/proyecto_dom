@@ -225,6 +225,13 @@ article.appendChild(timeFilter)
 
 main.appendChild(article)
 
+// botón de reseteo de filtros
+
+let resetBtn = document.createElement('button')
+resetBtn.textContent = 'Limpiar filtros'
+resetBtn.classList.add('resetButton')
+article.appendChild(resetBtn)
+
 //section
 let section = document.createElement('section')
 section.classList.add('container')
@@ -337,6 +344,88 @@ function timeFilteredGames(event) {
   document.querySelector('.container ul').innerHTML = ''
   // Vuelvo a crear las cards con los juegos que cumplan filtro
   for (const game of filteredGames) {
+    let card = document.createElement('li')
+    card.classList.add('card')
+
+    let cardImage = document.createElement('img')
+    cardImage.src = game.image
+    card.appendChild(cardImage)
+
+    let cardTitle = document.createElement('h3')
+    cardTitle.textContent = game.name
+    card.appendChild(cardTitle)
+
+    let cardPrice = document.createElement('p')
+    cardPrice.classList.add('gamePrice')
+    let price = document.createTextNode(game.price)
+    cardPrice.appendChild(price)
+    card.appendChild(cardPrice)
+
+    let button = document.createElement('button')
+    button.classList.add('cardButton')
+    let buttonText = document.createTextNode('Añadir al carrito')
+    button.appendChild(buttonText)
+    card.appendChild(button)
+
+    ul.appendChild(card)
+  }
+}
+
+// FILTRADO POR JUGADORES
+let playerButtons = document.querySelectorAll('.playerButton') // me hace un array
+
+for (const btn of playerButtons) {
+  btn.addEventListener('click', playerFilteredGames)
+}
+
+function playerFilteredGames(event) {
+  let playerSelected = Number(event.target.id)
+
+  let filteredGames = []
+  for (const game of games) {
+    if (game.players.includes(playerSelected)) {
+      filteredGames.push(game)
+    }
+  }
+
+  // Borro el contenido actual de los juegos mostrados
+  document.querySelector('.container ul').innerHTML = ''
+  // Vuelvo a crear las cards con los juegos que cumplan filtro
+  for (const game of filteredGames) {
+    let card = document.createElement('li')
+    card.classList.add('card')
+
+    let cardImage = document.createElement('img')
+    cardImage.src = game.image
+    card.appendChild(cardImage)
+
+    let cardTitle = document.createElement('h3')
+    cardTitle.textContent = game.name
+    card.appendChild(cardTitle)
+
+    let cardPrice = document.createElement('p')
+    cardPrice.classList.add('gamePrice')
+    let price = document.createTextNode(game.price)
+    cardPrice.appendChild(price)
+    card.appendChild(cardPrice)
+
+    let button = document.createElement('button')
+    button.classList.add('cardButton')
+    let buttonText = document.createTextNode('Añadir al carrito')
+    button.appendChild(buttonText)
+    card.appendChild(button)
+
+    ul.appendChild(card)
+  }
+}
+
+// LIMPIAR FILTROS
+resetBtn.addEventListener('click', resetGames)
+
+function resetGames(event) {
+  document.querySelector('.container ul').innerHTML = ''
+
+  for (const game of games) {
     let card = document.createElement('li')
     card.classList.add('card')
 
