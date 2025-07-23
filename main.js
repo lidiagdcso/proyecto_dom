@@ -300,6 +300,8 @@ footer.appendChild(ulFooter)
 document.body.appendChild(footer)
 
 // Funciones - Eventos
+
+// FILTRADO POR TIEMPO DE JUEGO
 // Selecciono los botones y les aplico un eventlistener que ejecute la función de filtrado:
 let timeButtons = document.querySelectorAll('.timeButton') // me hace un array
 
@@ -307,14 +309,57 @@ for (const btn of timeButtons) {
   btn.addEventListener('click', timeFilteredGames)
 }
 
-// function timeFilteredGames() {
-//   for (const game of games) {
-//     if (game.playingTime <= 15) {
-//       console.log('dura 15 min')
-//     } else if (game.playingTime > 15 && game.playingTime <= 30) {
-//       console.log('dura 30 min')
-//     } else if (game.playingTime >= 40) {
-//       console.log('dura 40 min')
-//     }
-//   }
-// }
+function timeFilteredGames(event) {
+  let timeSelected = Number(event.target.id)
+
+  let filteredGames = []
+
+  if (timeSelected === 15) {
+    for (const game of games) {
+      if (game.playingTime <= 15) {
+        filteredGames.push(game)
+      }
+    }
+  } else if (timeSelected === 30) {
+    for (const game of games) {
+      if (game.playingTime > 15 && game.playingTime <= 30) {
+        filteredGames.push(game)
+      }
+    }
+  } else if (timeSelected === 40) {
+    for (const game of games) {
+      if (game.playingTime >= 40) {
+        filteredGames.push(game)
+      }
+    }
+  }
+  // Borro el contenido actual de los juegos mostrados
+  document.querySelector('.container ul').innerHTML = ''
+  // Vuelvo a crear las cards con los juegos que cumplan filtro
+  for (const game of filteredGames) {
+    let card = document.createElement('li')
+    card.classList.add('card')
+
+    let cardImage = document.createElement('img')
+    cardImage.src = game.image
+    card.appendChild(cardImage)
+
+    let cardTitle = document.createElement('h3')
+    cardTitle.textContent = game.name
+    card.appendChild(cardTitle)
+
+    let cardPrice = document.createElement('p')
+    cardPrice.classList.add('gamePrice')
+    let price = document.createTextNode(game.price)
+    cardPrice.appendChild(price)
+    card.appendChild(cardPrice)
+
+    let button = document.createElement('button')
+    button.classList.add('cardButton')
+    let buttonText = document.createTextNode('Añadir al carrito')
+    button.appendChild(buttonText)
+    card.appendChild(button)
+
+    ul.appendChild(card)
+  }
+}
