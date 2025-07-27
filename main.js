@@ -320,13 +320,8 @@ document.body.appendChild(footer)
 
 // FILTRADO POR TIEMPO DE JUEGO
 // Selecciono los botones y les aplico un eventlistener que ejecute la función de filtrado:
-let timeButtons = document.querySelectorAll('.timeButton') // me hace un array
 
-for (const btn of timeButtons) {
-  btn.addEventListener('click', timeFilteredGames)
-}
-
-function timeFilteredGames(event) {
+let timeFilteredGames = (event) => {
   let timeSelected = Number(event.target.id)
 
   let filteredGames = []
@@ -381,14 +376,15 @@ function timeFilteredGames(event) {
   }
 }
 
-// FILTRADO POR JUGADORES
-let playerButtons = document.querySelectorAll('.playerButton') // me hace un array
+let timeButtons = document.querySelectorAll('.timeButton') // me hace un array
 
-for (const btn of playerButtons) {
-  btn.addEventListener('click', playerFilteredGames)
+for (const btn of timeButtons) {
+  btn.addEventListener('click', timeFilteredGames)
 }
 
-function playerFilteredGames(event) {
+// FILTRADO POR JUGADORES
+
+let playerFilteredGames = (event) => {
   let playerSelected = Number(event.target.id)
 
   let filteredGames = []
@@ -429,10 +425,15 @@ function playerFilteredGames(event) {
   }
 }
 
-// LIMPIAR FILTROS
-resetBtn.addEventListener('click', resetGames)
+let playerButtons = document.querySelectorAll('.playerButton') // me hace un array
 
-function resetGames(event) {
+for (const btn of playerButtons) {
+  btn.addEventListener('click', playerFilteredGames)
+}
+
+// LIMPIAR FILTROS
+
+let resetGames = (event) => {
   document.querySelector('.container ul').innerHTML = ''
 
   for (const game of games) {
@@ -462,3 +463,5 @@ function resetGames(event) {
     ul.appendChild(card)
   }
 }
+
+resetBtn.addEventListener('click', resetGames)
